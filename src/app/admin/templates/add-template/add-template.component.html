@@ -1,1 +1,59 @@
-<p>add-template works!</p>
+<div class="d-flex justify-content-between">
+  <h3>New Template</h3>
+  <button mat-icon-button>
+    <img src="assets/word.png" alt="" width="40" height="35" />
+  </button>
+</div>
+
+<mat-dialog-content>
+  <form [formGroup]="templateForm">
+    <div class="w-100 d-flex justify-content-between">
+      <div class="d-flex gap-2">
+        <mat-form-field class="w-320p">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name"/>
+        </mat-form-field>
+        <mat-form-field class="w-320p">
+          <mat-label>Select category</mat-label>
+          <mat-select formControlName="category">
+            <mat-option value="one">First option</mat-option>
+            <mat-option value="two">Second option</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="w-420p">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description"/>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-label>Content</mat-label>
+    <angular-editor
+      [placeholder]="'Enter text here...'"
+      formControlName="content"
+      [config]="editorConfig"
+    >
+      <ng-template #customButtons let-executeCommandFn="executeCommandFn">
+        <ae-toolbar-set>
+          <ae-button
+            iconClass="fa fa-pencil-square-o"
+            title="Angular editor logo"
+            (buttonClick)="onClickAddInput(executeCommandFn)"
+          >
+          </ae-button>
+        </ae-toolbar-set>
+      </ng-template>
+    </angular-editor>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    cdkFocusInitial
+    (click)="save()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

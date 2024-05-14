@@ -19,6 +19,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { AddTemplateComponent } from './templates/add-template/add-template.component';
 import {MatTreeModule} from '@angular/material/tree';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { AddRoutesComponent } from './templates/add-routes/add-routes.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -34,8 +38,11 @@ import {MatTreeModule} from '@angular/material/tree';
     MatButtonModule,
     MatDialogModule,
     MatTableModule,
-    MatTreeModule
+    MatTreeModule,
+    AngularEditorModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
-  declarations: [LayoutComponent, TopNavComponent, SideNavComponent, CategoriesComponent, TemplatesComponent, AddTemplateComponent]
+  declarations: [LayoutComponent, TopNavComponent, SideNavComponent, CategoriesComponent, TemplatesComponent, AddTemplateComponent, AddRoutesComponent]
 })
 export class AdminModule {}
