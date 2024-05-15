@@ -23,18 +23,23 @@ export class TodoItemFlatNode {
  * The Json object for to-do list data.
  */
 const TREE_DATA = {
-  Groceries: {
-    'Almond Meal flour': null,
-    'Organic eggs': null,
-    'Protein Powder': null,
-    Fruits: {
-      Apple: null,
-      Berries: ['Blueberry', 'Raspberry'],
-      Orange: null,
+  Поликлника: {
+    Медсправка: ['1.Больничный лист', '2.Справка о состоянии здоровья',
+      '3.Справка для спорта и физической активности', '4.Справка о прививках',
+      '5.Справка для посещения бассейна, сауны и т. д.', '6.Справка о наличии инфекционных заболеваний',
+      '7.Справка о смерти', '8.Справка для получения льгот и пособий', '9.Справка для выезда за границу',"***"
+    ],
+      },
+
+  Университет: {
+    Обходной_Лист: ['1.Обходной лист для допуска на ГОС экзамен', 
+                  '2.Обходной лист для исключение из университета', '***'],
     },
-  },
-  Reminders: ['Cook dinner', 'Read the Material Design spec', 'Upgrade Application to Angular'],
-};
+
+  Компания: {
+    Приём_Нового_Сотрудника: ['1.Соглашение', '***'],
+  }
+}
 
 /**
  * Checklist database, it can build a tree structured Json object.
@@ -262,5 +267,5 @@ export class CategoriesComponent {
   saveNode(node: TodoItemFlatNode, itemValue: string) {
     const nestedNode = this.flatNodeMap.get(node);
     this._database.updateItem(nestedNode!, itemValue);
-  }
+  }     
 }
