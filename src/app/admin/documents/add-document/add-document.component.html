@@ -2,9 +2,9 @@
   <mat-card-header>
     <div class="d-flex w-100 justify-content-between align-item-center">
       <div class="d-flex gap-2">
-        <h2>New Document</h2>
+        <h2>Новый документ</h2>
         <mat-form-field>
-          <mat-label>Select Template</mat-label>
+          <mat-label>Выберите шаблон</mat-label>
           <mat-select (valueChange)="onSelectTemplate($event)">
             <mat-option *ngFor="let temp of templates" [value]="temp">{{
               temp.name
@@ -13,7 +13,7 @@
         </mat-form-field>
       </div>
       <button mat-raised-button color="primary" (click)="create()">
-        Create
+        Создавать
       </button>
     </div>
   </mat-card-header>
@@ -22,26 +22,27 @@
       <div class="w-100 d-flex justify-content-between">
         <div class="d-flex gap-2">
           <mat-form-field class="w-320p">
-            <mat-label>Name</mat-label>
+            <mat-label>Имя</mat-label>
             <input matInput formControlName="name" />
           </mat-form-field>
           <mat-form-field class="w-420p">
-            <mat-label>Description</mat-label>
+            <mat-label>Описание</mat-label>
             <input matInput formControlName="description" />
           </mat-form-field>
         </div>
         <div class="d-flex gap-1">
           <button mat-button color="primary" (click)="create()">
-            Save as Template
+            Сохранить как шаблон
           </button>
         </div>
       </div>
-      <mat-label>Content</mat-label>
+      <div class="mb10"><b>Содержание</b></div>
+      
       <angular-editor formControlName="content" [config]="editorConfig">
       </angular-editor>
 
       <div class="d-flex gap-1 align-item-center">
-        <h3>Routes</h3>
+        <h3>Маршруты</h3>
       </div>
       <mat-stepper orientation="vertical" [disableRipple]="true">
         <mat-step *ngFor="let route of selectedTemplate.routes" >
@@ -51,11 +52,11 @@
           <ng-template matStepContent>
             <div class="d-flex gap-2">
               <div>
-                <b>Department</b>
+                <b>Отделение: </b> <br>
                 <span>{{ route.department }}</span>
               </div>
               <div>
-                <b>Role</b>
+                <b>Роль</b> <br>
                 <span>{{ route.role }}</span>
               </div>
             </div>

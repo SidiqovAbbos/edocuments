@@ -21,7 +21,6 @@ export class AddTemplateComponent implements OnInit {
     translate: "yes",
     enableToolbar: true,
     showToolbar: true,
-    placeholder: "Enter text here...",
     defaultParagraphSeparator: "",
     defaultFontName: "",
     defaultFontSize: "",
