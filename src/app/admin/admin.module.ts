@@ -1,31 +1,32 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { MatButtonModule } from "@angular/material/button";
+import { MatInputModule } from "@angular/material/input";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from "@angular/material/toolbar";
 
-import { AdminRoutingModule } from './admin-routing.module';
-import { LayoutComponent } from './layout/layout.component';
-import { TopNavComponent } from './layout/top-nav/top-nav.component';
-import { SideNavComponent } from './layout/side-nav/side-nav.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { TemplatesComponent } from './templates/templates.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatTableModule } from '@angular/material/table';
-import { AddTemplateComponent } from './templates/add-template/add-template.component';
-import {MatTreeModule} from '@angular/material/tree';
-import { AngularEditorModule } from '@kolkov/angular-editor';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatSelectModule } from '@angular/material/select';
-import { AddRoutesComponent } from './templates/add-routes/add-routes.component';
-import { DocumentsComponent } from './documents/documents.component';
-import { MatStepperModule } from '@angular/material/stepper';
-import { AddDocumentComponent } from './documents/add-document/add-document.component';
+import { AdminRoutingModule } from "./admin-routing.module";
+import { LayoutComponent } from "./layout/layout.component";
+import { TopNavComponent } from "./layout/top-nav/top-nav.component";
+import { SideNavComponent } from "./layout/side-nav/side-nav.component";
+import { CategoriesComponent } from "./categories/categories.component";
+import { TemplatesComponent } from "./templates/templates.component";
+import { MatCardModule } from "@angular/material/card";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatTableModule } from "@angular/material/table";
+import { AddTemplateComponent } from "./templates/add-template/add-template.component";
+import { MatTreeModule } from "@angular/material/tree";
+import { AngularEditorModule } from "@kolkov/angular-editor";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatSelectModule } from "@angular/material/select";
+import { AddRoutesComponent } from "./templates/add-routes/add-routes.component";
+import { DocumentsComponent } from "./documents/documents.component";
+import { MatStepperModule } from "@angular/material/stepper";
+import { AddDocumentComponent } from "./documents/add-document/add-document.component";
+import { VewDocumentComponent } from "./documents/vew-document/vew-document.component";
 @NgModule({
   imports: [
     CommonModule,
@@ -46,8 +47,20 @@ import { AddDocumentComponent } from './documents/add-document/add-document.comp
     MatSelectModule,
     ReactiveFormsModule,
     MatMenuModule,
-    MatStepperModule
+    MatStepperModule,
+    FormsModule
   ],
-  declarations: [LayoutComponent, TopNavComponent, SideNavComponent, CategoriesComponent, TemplatesComponent, AddTemplateComponent, AddRoutesComponent, DocumentsComponent, AddDocumentComponent]
+  declarations: [
+    LayoutComponent,
+    TopNavComponent,
+    SideNavComponent,
+    CategoriesComponent,
+    TemplatesComponent,
+    AddTemplateComponent,
+    AddRoutesComponent,
+    DocumentsComponent,
+    AddDocumentComponent,
+    VewDocumentComponent,
+  ],
 })
 export class AdminModule {}

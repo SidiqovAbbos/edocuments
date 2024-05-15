@@ -4,6 +4,8 @@ import { FormArray, FormBuilder, FormGroup } from "@angular/forms";
 import { AngularEditorConfig } from "@kolkov/angular-editor";
 import { Location } from "@angular/common";
 import { Template, TemplatesService } from "../../templates/teplates.service";
+import { MatDialog } from "@angular/material/dialog";
+import { VewDocumentComponent } from "../vew-document/vew-document.component";
 
 @Component({
   selector: "app-add-document",
@@ -57,8 +59,8 @@ export class AddDocumentComponent implements OnInit {
   templates: Template[] = [];
   constructor(
     private location: Location,
-    private templatesService: DocumentsService,
-    private templateService: TemplatesService,
+    private documentsService: DocumentsService,
+    private templatesService: TemplatesService,
     _fb: FormBuilder
   ) {
     this.documentForm = _fb.group({
@@ -92,11 +94,14 @@ export class AddDocumentComponent implements OnInit {
     }
    
     this.documentForm.value.content = result;
+    this.documentsService.addDoc(this.documentForm.value);
+    this.location.back();
   }
-
+  
   get routes() {
     return this.documentForm.get("routes") as FormArray;
   }
+
 
   onClickAddInput(executeCommandFn: any) {
     const text = this.getSelectionText();
@@ -113,6 +118,6 @@ export class AddDocumentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.templates = this.templateService.templates.map((x) => x);
+    this.templates = this.templatesService.templates.map((x) => x);
   }
 }

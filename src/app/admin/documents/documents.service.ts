@@ -13,16 +13,20 @@ export class DocumentsService {
   documents: Document[] = [
     {
       name: "My Document 1",
-      content: "",
+      content: "Salom <b>Abbos</b>",
     },
     {
       name: "My Document 1",
-      content: "",
+      content: "Salom <b>Shuhrat</b>",
     },
     {
       name: "My Document 1",
-      content: "",
+      content: "Empty",
     },
   ];
   constructor() {}
+
+  addDoc(document: Document) {
+    this.documents.push(document);
+  }
 }

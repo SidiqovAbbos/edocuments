@@ -77,7 +77,7 @@
           <mat-icon color="primary">add</mat-icon>
         </button>
       </div>
-      <mat-stepper orientation="vertical">
+      <mat-stepper orientation="vertical" [disableRipple]="true">
         <mat-step *ngFor="let route of routes.controls; let i = index">
             <div [formGroup]="route">
                 <ng-template matStepLabel>

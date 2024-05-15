@@ -42,12 +42,9 @@
 
       <div class="d-flex gap-1 align-item-center">
         <h3>Routes</h3>
-        <button mat-icon-button (click)="addStep()">
-          <mat-icon color="primary">add</mat-icon>
-        </button>
       </div>
-      <mat-stepper orientation="vertical">
-        <mat-step *ngFor="let route of selectedTemplate.routes">
+      <mat-stepper orientation="vertical" [disableRipple]="true">
+        <mat-step *ngFor="let route of selectedTemplate.routes" >
           <ng-template matStepLabel>
             {{ route.name }}
           </ng-template>
