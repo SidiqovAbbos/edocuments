@@ -102,7 +102,6 @@ export class AddDocumentComponent implements OnInit {
     return this.documentForm.get("routes") as FormArray;
   }
 
-
   onClickAddInput(executeCommandFn: any) {
     const text = this.getSelectionText();
     if (!text) return;

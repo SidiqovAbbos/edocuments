@@ -37,26 +37,29 @@
         </div>
       </div>
       <div class="mb10"><b>Содержание</b></div>
-      
+
       <angular-editor formControlName="content" [config]="editorConfig">
       </angular-editor>
 
       <div class="d-flex gap-1 align-item-center">
-        <h3>Маршруты</h3>
+        <h3>Маршруты: </h3>
       </div>
       <mat-stepper orientation="vertical" [disableRipple]="true">
-        <mat-step *ngFor="let route of selectedTemplate.routes" >
+        <mat-step
+          *ngFor="let route of selectedTemplate.routes"
+          [completed]="true"
+        >
           <ng-template matStepLabel>
             {{ route.name }}
           </ng-template>
           <ng-template matStepContent>
-            <div class="d-flex gap-2">
+            <div>
               <div>
-                <b>Отделение: </b> <br>
+                <b>Отделение: </b> &nbsp;
                 <span>{{ route.department }}</span>
               </div>
               <div>
-                <b>Роль</b> <br>
+                <b>Роль: </b> &nbsp;
                 <span>{{ route.role }}</span>
               </div>
             </div>

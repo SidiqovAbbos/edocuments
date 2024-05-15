@@ -41,6 +41,7 @@ export class TemplatesService {
       <p style="margin-top:0pt; margin-bottom:0pt;">&nbsp;</p>
       <p style="margin-top:0pt; margin-bottom:0pt;">&nbsp;</p>`,
       description: "",
+      routes: [{name: 'Step 1', department: 'Dep 1', role: 'role 1'}, {name: 'Step 2', department: 'Dep 2', role: 'role 2'}]
     },
   ];
   constructor() { }
