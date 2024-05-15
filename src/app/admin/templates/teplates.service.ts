@@ -14,7 +14,7 @@ export interface Template {
 export class TemplatesService {
   templates: Template[] = [
     {
-      name: "Мой Шаблон 2",
+      name: "Мой Шаблон_1",
       category: "Университет",
       content:
         'Salom&nbsp;<input type="text" class="my-custom-control" data-name="Name" placeholder="Name">',
