@@ -23,6 +23,9 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { AddRoutesComponent } from './templates/add-routes/add-routes.component';
+import { DocumentsComponent } from './documents/documents.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { AddDocumentComponent } from './documents/add-document/add-document.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -41,8 +44,10 @@ import { AddRoutesComponent } from './templates/add-routes/add-routes.component'
     MatTreeModule,
     AngularEditorModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatStepperModule
   ],
-  declarations: [LayoutComponent, TopNavComponent, SideNavComponent, CategoriesComponent, TemplatesComponent, AddTemplateComponent, AddRoutesComponent]
+  declarations: [LayoutComponent, TopNavComponent, SideNavComponent, CategoriesComponent, TemplatesComponent, AddTemplateComponent, AddRoutesComponent, DocumentsComponent, AddDocumentComponent]
 })
 export class AdminModule {}

@@ -60,7 +60,6 @@ export class HomeComponent implements OnInit {
   hideItems() {
     this.items = [];
   }
-
   toggle() {
     this.items.length ? this.hideItems() : this.showItems();
   }

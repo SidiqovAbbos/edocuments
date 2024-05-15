@@ -1,67 +1,84 @@
-import { Route } from '@angular/router';
-import { CategoriesComponent } from './categories/categories.component';
-import { TemplatesComponent } from './templates/templates.component';
+import { Route } from "@angular/router";
+import { CategoriesComponent } from "./categories/categories.component";
+import { TemplatesComponent } from "./templates/templates.component";
+import { DocumentsComponent } from "./documents/documents.component";
+import { AddTemplateComponent } from "./templates/add-template/add-template.component";
+import { AddDocumentComponent } from "./documents/add-document/add-document.component";
 
 export const childRoutes: Route[] = [
   {
-    path: 'categories',
+    path: "categories",
     component: CategoriesComponent,
-    data: { icon: 'category', text: 'Category'}
+    data: { icon: "category", text: "Categories" },
   },
   {
-    path: 'templates',
+    path: "templates",
     component: TemplatesComponent,
-    data: { icon: 'list_alt', text: 'Templates'}
+    data: { icon: "list_alt", text: "Templates" },
   },
   {
-    path: 'dashboard',
+    path: "template-new",
+    component: AddTemplateComponent,
+  },
+  {
+    path: "documents",
+    component: DocumentsComponent,
+    data: { icon: "insert_drive_file", text: "Documents" },
+  },
+  {
+    path: "document-new",
+    component: AddDocumentComponent,
+  },
+  {
+    path: "dashboard",
     loadChildren: () =>
-      import('./dashboard/dashboard.module').then(m => m.DashboardModule),
-    data: { icon: 'dashboard', text: 'Dashboard' }
+      import("./dashboard/dashboard.module").then((m) => m.DashboardModule),
+    data: { icon: "dashboard", text: "Dashboard" },
   },
   {
-    path: 'charts',
+    path: "charts",
     loadChildren: () =>
-      import('./charts/charts.module').then(m => m.ChartsModule),
-    data: { icon: 'bar_chart', text: 'Charts' }
+      import("./charts/charts.module").then((m) => m.ChartsModule),
+    data: { icon: "bar_chart", text: "Charts" },
   },
   {
-    path: 'tables',
+    path: "tables",
     loadChildren: () =>
-      import('./tables/tables.module').then(m => m.TablesModule),
-    data: { icon: 'table_chart', text: 'Tables' }
+      import("./tables/tables.module").then((m) => m.TablesModule),
+    data: { icon: "table_chart", text: "Tables" },
   },
   {
-    path: 'forms',
-    loadChildren: () => import('./forms/forms.module').then(m => m.FormsModule),
-    data: { icon: 'assignment', text: 'Forms' }
-  },
-  {
-    path: 'mat-grid',
+    path: "forms",
     loadChildren: () =>
-      import('./mat-grid/mat-grid.module').then(m => m.MatGridModule),
-    data: { icon: 'grid_on', text: 'Flex Grid' }
+      import("./forms/forms.module").then((m) => m.FormsModule),
+    data: { icon: "assignment", text: "Forms" },
   },
   {
-    path: 'mat-components',
+    path: "mat-grid",
     loadChildren: () =>
-      import('./mat-components/mat-components.module').then(
-        m => m.MatComponentsModule
+      import("./mat-grid/mat-grid.module").then((m) => m.MatGridModule),
+    data: { icon: "grid_on", text: "Flex Grid" },
+  },
+  {
+    path: "mat-components",
+    loadChildren: () =>
+      import("./mat-components/mat-components.module").then(
+        (m) => m.MatComponentsModule
       ),
-    data: { icon: 'code', text: 'Material Components' }
+    data: { icon: "code", text: "Material Components" },
   },
   {
-    path: 'animations',
+    path: "animations",
     loadChildren: () =>
-      import('./animations/animations.module').then(m => m.AnimationsModule),
-    data: { icon: 'perm_media', text: 'Animations' }
+      import("./animations/animations.module").then((m) => m.AnimationsModule),
+    data: { icon: "perm_media", text: "Animations" },
   },
   {
-    path: 'google-maps',
+    path: "google-maps",
     loadChildren: () =>
-      import('./google-map-demo/google-map-demo.module').then(
-        m => m.GoogleMapDemoModule
+      import("./google-map-demo/google-map-demo.module").then(
+        (m) => m.GoogleMapDemoModule
       ),
-    data: { icon: 'place', text: 'Google Maps' }
-  }
+    data: { icon: "place", text: "Google Maps" },
+  },
 ];

@@ -1,0 +1,70 @@
+<mat-card>
+  <mat-card-header>
+    <div class="d-flex w-100 justify-content-between align-item-center">
+      <div class="d-flex gap-2">
+        <h2>New Document</h2>
+        <mat-form-field>
+          <mat-label>Select Template</mat-label>
+          <mat-select (valueChange)="onSelectTemplate($event)">
+            <mat-option *ngFor="let temp of templates" [value]="temp">{{
+              temp.name
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="create()">
+        Create
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-card-content class="px20" *ngIf="selectedTemplate">
+    <form [formGroup]="documentForm">
+      <div class="w-100 d-flex justify-content-between">
+        <div class="d-flex gap-2">
+          <mat-form-field class="w-320p">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" />
+          </mat-form-field>
+          <mat-form-field class="w-420p">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" />
+          </mat-form-field>
+        </div>
+        <div class="d-flex gap-1">
+          <button mat-button color="primary" (click)="create()">
+            Save as Template
+          </button>
+        </div>
+      </div>
+      <mat-label>Content</mat-label>
+      <angular-editor formControlName="content" [config]="editorConfig">
+      </angular-editor>
+
+      <div class="d-flex gap-1 align-item-center">
+        <h3>Routes</h3>
+        <button mat-icon-button (click)="addStep()">
+          <mat-icon color="primary">add</mat-icon>
+        </button>
+      </div>
+      <mat-stepper orientation="vertical">
+        <mat-step *ngFor="let route of selectedTemplate.routes">
+          <ng-template matStepLabel>
+            {{ route.name }}
+          </ng-template>
+          <ng-template matStepContent>
+            <div class="d-flex gap-2">
+              <div>
+                <b>Department</b>
+                <span>{{ route.department }}</span>
+              </div>
+              <div>
+                <b>Role</b>
+                <span>{{ route.role }}</span>
+              </div>
+            </div>
+          </ng-template>
+        </mat-step>
+      </mat-stepper>
+    </form>
+  </mat-card-content>
+</mat-card>

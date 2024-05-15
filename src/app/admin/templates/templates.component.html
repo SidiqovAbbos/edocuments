@@ -1,9 +1,19 @@
 <mat-card>
   <div class="d-flex w-100 justify-content-between align-item-center">
-    <h3>Templates</h3>
-    <button mat-raised-button color="primary" (click)="onNew()">Add</button>
+      <div class="d-flex gap-1">
+        <h3>Templates</h3>
+        <mat-form-field >
+            <mat-label>Select Category</mat-label>
+            <mat-select>
+              <mat-option value="option1">Option 1</mat-option>
+              <mat-option value="option2">Option 2</mat-option>
+              <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="onNew()">+ Add</button>
   </div>
-<table mat-table  [dataSource]="dataSource" class="mat-elevation-z2 w-100">
+<table mat-table [@listAnimation]="dataSource.length"  [dataSource]="dataSource" class="mat-elevation-z2 w-100">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->

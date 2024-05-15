@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { MatDialogRef } from "@angular/material/dialog";
+import { Location } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { AngularEditorConfig } from "@kolkov/angular-editor";
+import { TemplatesService } from "../teplates.service";
 
 @Component({
   selector: "app-add-template",
@@ -13,7 +14,7 @@ export class AddTemplateComponent implements OnInit {
     editable: true,
     spellcheck: true,
     height: "auto",
-    minHeight: "0",
+    minHeight: "12rem",
     maxHeight: "auto",
     width: "auto",
     minWidth: "0",
@@ -47,21 +48,16 @@ export class AddTemplateComponent implements OnInit {
     ],
     uploadUrl: "v1/image",
     uploadWithCredentials: false,
-    sanitize: true,
+    sanitize: false,
     toolbarPosition: "top",
-    toolbarHiddenButtons: [["bold", "italic"], ["fontSize"]],
+    toolbarHiddenButtons: [["undo", "redo"], ["toggleEditorMode"]],
   };
-  // editor: EditorJS;
-  // editorREADONLY: EditorJS;
+  steps = [];
 
-  // editorState = {};
-
-  save() {
-    this.dialogRef.close(this.templateForm.value);
-  }
   templateForm: FormGroup;
   constructor(
-    private dialogRef: MatDialogRef<AddTemplateComponent>,
+    private location: Location,
+    private templatesService: TemplatesService,
     _fb: FormBuilder
   ) {
     this.templateForm = _fb.group({
@@ -69,14 +65,38 @@ export class AddTemplateComponent implements OnInit {
       description: [""],
       content: [""],
       category: [""],
+      routes: _fb.array([]),
     });
+  }
+
+  save() {
+    this.templatesService.add(this.templateForm.value);
+    this.location.back();
+  }
+  get routes() {
+    return this.templateForm.get("routes") as FormArray;
+  }
+  addStep() {
+    this.routes.push(
+      new FormGroup({
+        name: new FormControl(),
+        department: new FormControl(),
+        role: new FormControl(),
+      })
+    );
+  }
+
+  deleteStep(index: number) {
+    const routes = this.templateForm.get("routes") as FormArray;
+    this.routes.removeAt(index);
   }
 
   onClickAddInput(executeCommandFn: any) {
     const text = this.getSelectionText();
+    if (!text) return;
     executeCommandFn(
       "insertHtml",
-      `{{${text}}}`
+      `<input type="text" class="my-custom-control" data-name="${text}" placeholder="${text}">`
     );
   }
 
@@ -89,4 +109,25 @@ export class AddTemplateComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  importWordDocument() {
+    let input = document.createElement("input");
+    input.type = "file";
+    input.onchange = (_) => {
+      this.templateForm.get("content").setValue(this.wordContent);
+    };
+    input.click();
+  }
+
+  wordContent = `
+  <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:16pt;">СПРАВКА</p>
+  <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:16pt;">&nbsp;</p>
+  <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:16pt;">&nbsp;</p>
+  <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:16pt;">&nbsp;</p>
+  <p style="margin-top:0pt; margin-bottom:0pt;">Выдана (ФИО) о том, что он действительно работает в (название организации) в должности (название должности) <br>&nbsp;</p>
+  <p style="margin-top:0pt; margin-bottom:0pt;">&nbsp;</p>
+  <p style="margin-top:0pt; margin-bottom:0pt;">Справка дана для предоставления по месту требования.</p>
+  <p style="margin-top:0pt; margin-bottom:0pt;">&nbsp;</p>
+  <p style="margin-top:0pt; margin-bottom:0pt;">&nbsp;</p>
+  <p style="margin-top:0pt; margin-bottom:0pt;">&nbsp;</p>`;
 }
