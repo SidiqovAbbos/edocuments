@@ -12,19 +12,19 @@ export interface Document {
 export class DocumentsService {
   documents: Document[] = [
     {
-      name: "My Document 1",
-      content: "Salom <b>Abbos</b>",
+      name: "Мой Документ_1",
+      content: "",
     },
     {
-      name: "My Document 1",
-      content: "Salom <b>Shuhrat</b>",
+      name: "Мой Документ_2",
+      content: "",
     },
     {
-      name: "My Document 1",
-      content: "Empty",
+      name: "Мой Документ_3",
+      content: "",
     },
   ];
-  constructor() {}
+  constructor() { }
 
   addDoc(document: Document) {
     this.documents.push(document);

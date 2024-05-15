@@ -34,10 +34,10 @@ import { Router } from "@angular/router";
 export class TemplatesComponent implements OnInit {
   dataSource: any[] = [];
   displayedColumns: string[] = ['number', 'name', 'description', 'category'];
-  constructor(private router: Router, private templatesService: TemplatesService) {}
+  constructor(private router: Router, private templatesService: TemplatesService) { }
 
   ngOnInit(): void {
-    this.dataSource = this.templatesService.templates.map((a, i) => ({ ...a, number: i + 1}));
+    this.dataSource = this.templatesService.templates.map((a, i) => ({ ...a, number: i + 1 }));
   }
 
   onNew() {
