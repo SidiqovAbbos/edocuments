@@ -5,7 +5,7 @@ export interface Template {
   description: string;
   content: string;
   category: string;
-  routes?: any[]; 
+  routes?: any[];
 }
 
 @Injectable({
@@ -14,21 +14,21 @@ export interface Template {
 export class TemplatesService {
   templates: Template[] = [
     {
-      name: "My Template 1",
-      category: "Spravka",
+      name: "Мой Шаблон 2",
+      category: "Университет",
       content:
         'Salom&nbsp;<input type="text" class="my-custom-control" data-name="Name" placeholder="Name">',
-      description: "desc ...",
+      description: "опис ...",
     },
     {
-      name: "My Template 2",
-      category: "Spravka007",
+      name: "Мой Шаблон_2",
+      category: "Поликлника",
       content: `Salom`,
       description: "",
     },
     {
-      name: "My Template 2",
-      category: "Otchet",
+      name: "Мой Шаблон_3",
+      category: "Компания",
       content: `
       <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:16pt;">СПРАВКА</p>
       <p style="margin-top:0pt; margin-bottom:0pt; text-align:center; font-size:16pt;">&nbsp;</p>
@@ -43,7 +43,7 @@ export class TemplatesService {
       description: "",
     },
   ];
-  constructor() {}
+  constructor() { }
 
   add(template: Template) {
     this.templates.push(template);

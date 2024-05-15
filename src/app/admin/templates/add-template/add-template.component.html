@@ -3,13 +3,8 @@
     <div class="d-flex gap-2 w-100 align-item-center">
       <h2>New Template</h2>
 
-      <button
-        mat-raised-button
-        color="primary"
-        cdkFocusInitial
-        (click)="save()"
-      >
-        Save
+      <button mat-raised-button color="primary" cdkFocusInitial (click)="save()">
+        Сохранить
       </button>
     </div>
   </mat-card-header>
@@ -18,18 +13,20 @@
       <div class="w-100 d-flex justify-content-between">
         <div class="d-flex gap-2">
           <mat-form-field class="w-320p">
-            <mat-label>Name</mat-label>
+            <mat-label>Имя</mat-label>
             <input matInput formControlName="name" />
           </mat-form-field>
           <mat-form-field class="w-320p">
-            <mat-label>Select category</mat-label>
+            <mat-label>Выберите категорию</mat-label>
             <mat-select formControlName="category">
-              <mat-option value="one">First option</mat-option>
-              <mat-option value="two">Second option</mat-option>
+              <mat-option value="Поликлника">Поликлника</mat-option>
+              <mat-option value="Университет">Университет</mat-option>
+              <mat-option value="Компания">Компания</mat-option>
+
             </mat-select>
           </mat-form-field>
           <mat-form-field class="w-420p">
-            <mat-label>Description</mat-label>
+            <mat-label>Описание</mat-label>
             <input matInput formControlName="description" />
           </mat-form-field>
         </div>
@@ -45,19 +42,11 @@
           </button>
         </div>
       </div>
-      <mat-label>Content</mat-label>
-      <angular-editor
-        [placeholder]="'Enter text here...'"
-        formControlName="content"
-        [config]="editorConfig"
-      >
+      <mat-label>Содержание</mat-label>
+      <angular-editor formControlName="content" [config]="editorConfig">
         <ng-template #customButtons let-executeCommandFn="executeCommandFn">
           <ae-toolbar-set>
-            <ae-button
-              [matMenuTriggerFor]="menu"
-              iconClass="fa fa-pencil-square-o"
-              title="Angular editor logo"
-            >
+            <ae-button [matMenuTriggerFor]="menu" iconClass="fa fa-pencil-square-o" title="Angular editor logo">
             </ae-button>
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="onClickAddInput(executeCommandFn)">
@@ -74,41 +63,41 @@
       <div class="d-flex gap-1 align-item-center">
         <h3>Routes</h3>
         <button mat-icon-button (click)="addStep()">
-          <mat-icon color="primary">add</mat-icon>
+          <mat-icon color="primary">Добавить</mat-icon>
         </button>
       </div>
       <mat-stepper orientation="vertical" [disableRipple]="true">
         <mat-step *ngFor="let route of routes.controls; let i = index">
-            <div [formGroup]="route">
-                <ng-template matStepLabel>
-                    <input type="text" matInput formControlName="name" placeholder="Enter name" />
-                  </ng-template>
-                  <ng-template matStepContent>
-                    <div class="d-flex gap-1">
-                      <mat-form-field>
-                        <mat-label>Department</mat-label>
-                        <mat-select formControlName="department">
-                          <mat-option value="Department 1">Department 1</mat-option>
-                          <mat-option value="Department 2">Department 2</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                      <mat-form-field>
-                        <mat-label>Role</mat-label>
-                        <mat-select formControlName="role">
-                          <mat-option value="Role 1">Role 1</mat-option>
-                          <mat-option value="Role 2">Role 2</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                    </div>
-                    <p>
-                      Remove current step
-                      <button mat-icon-button (click)="deleteStep(i)">
-                        <mat-icon color="warn">delete</mat-icon>
-                      </button>
-                    </p>
-                  </ng-template>
-            </div>
-       
+          <div [formGroup]="route">
+            <ng-template matStepLabel>
+              <input type="text" matInput formControlName="name" placeholder="Enter name" />
+            </ng-template>
+            <ng-template matStepContent>
+              <div class="d-flex gap-1">
+                <mat-form-field>
+                  <mat-label>Department</mat-label>
+                  <mat-select formControlName="department">
+                    <mat-option value="Department 1">Department 1</mat-option>
+                    <mat-option value="Department 2">Department 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Role</mat-label>
+                  <mat-select formControlName="role">
+                    <mat-option value="Role 1">Role 1</mat-option>
+                    <mat-option value="Role 2">Role 2</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <p>
+                Remove current step
+                <button mat-icon-button (click)="deleteStep(i)">
+                  <mat-icon color="warn">delete</mat-icon>
+                </button>
+              </p>
+            </ng-template>
+          </div>
+
         </mat-step>
       </mat-stepper>
     </form>
