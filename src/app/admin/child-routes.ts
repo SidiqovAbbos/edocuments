@@ -9,7 +9,7 @@ export const childRoutes: Route[] = [
   {
     path: "categories",
     component: CategoriesComponent,
-    data: { icon: "category", text: "Categories" },
+    data: { icon: 'category', text: 'Категория'}
   },
   {
     path: "templates",
