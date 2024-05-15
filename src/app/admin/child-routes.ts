@@ -6,7 +6,7 @@ export const childRoutes: Route[] = [
   {
     path: 'categories',
     component: CategoriesComponent,
-    data: { icon: 'category', text: 'Category'}
+    data: { icon: 'category', text: 'Категория'}
   },
   {
     path: 'templates',

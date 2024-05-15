@@ -1,6 +1,6 @@
 <mat-card>
     <div>
-        <h3>Categories</h3>
+        <h3>Категории</h3>
     </div>
     <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
         <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
@@ -11,10 +11,10 @@
         <mat-tree-node *matTreeNodeDef="let node; when: hasNoContent" matTreeNodePadding>
           <button mat-icon-button disabled></button>
           <mat-form-field appearance="fill">
-            <mat-label>New item...</mat-label>
-            <input matInput #itemValue placeholder="Ex. Lettuce">
+            <mat-label>Новый предмет...</mat-label>
+            <input matInput #itemValue placeholder="...">
           </mat-form-field>
-          <button mat-button (click)="saveNode(node, itemValue.value)">Save</button>
+          <button mat-button (click)="saveNode(node, itemValue.value)">Сохранить</button>
         </mat-tree-node>
       
         <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
@@ -25,7 +25,7 @@
             </mat-icon>
           </button>
           {{node.item}}
-          <button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon></button>
+          <button mat-icon-button (click)="addNewItem(node)"><mat-icon>add</mat-icon></button>      
         </mat-tree-node>
       </mat-tree>
 </mat-card>
